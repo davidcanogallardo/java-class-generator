@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
+</head>
+<body>
+    <form action="" method="post" id="class">
+        <h1>Header</h1>
+        <label for="">Class name <input type="text" name="class-name" id=""></label>
+    </form>
+    <form action="" method="post" class="property">
+        <h1>Properties</h1>
+        <label for="">Property name <input type="text" name="property-name" id=""></label>
+        <label for="">Property type 
+            <select name="property-type" id="cars">
+                <option value="int">int</option>
+                <option value="String">String</option>
+                <option value="boolean">boolean</option>
+                <option value="char">char</option>
+              </select>
+        </label>
+        <label for="">Accesibility 
+            <div>
+                <input type="radio" id="public" name="accesibility" value="public"
+                checked>
+                <label for="public">public</label> 
+            </div>
+            <div>
+                <input type="radio" id="private" name="accesibility" value="private"
+                >
+                <label for="private">private</label> 
+            </div>
+            <div>
+                <input type="radio" id="protected" name="accesibility" value="protected"
+                >
+                <label for="protected">protected</label> 
+            </div>
+        <label for="">Methods 
+            <div>
+                <input type="checkbox" id="setter" name="setter" value="setter">
+                <label for="setter">setter</label>
+            </div>
+            <div>
+                <input type="checkbox" id="getter" name="getter" value="getter">
+                <label for="getter">getter</label>
+            </div>
+        </label>
+    </form>
+    <form action="" method="post" class="property">
+        <label for="">Property name <input type="text" name="property-name" id=""></label>
+        <label for="">Property type 
+            <select name="property-type" id="cars">
+                <option value="int">int</option>
+                <option value="String">String</option>
+                <option value="boolean">boolean</option>
+                <option value="char">char</option>
+              </select>
+        </label>
+        <label for="">Accesibility 
+            <div>
+                <input type="radio" id="public" name="accesibility" value="public"
+                checked>
+                <label for="public">public</label> 
+            </div>
+            <div>
+                <input type="radio" id="private" name="accesibility" value="private"
+                >
+                <label for="private">private</label> 
+            </div>
+            <div>
+                <input type="radio" id="protected" name="accesibility" value="protected"
+                >
+                <label for="protected">protected</label> 
+            </div>
+        <label for="">Methods 
+            <div>
+                <input type="checkbox" id="setter" name="setter" value="setter">
+                <label for="setter">setter</label>
+            </div>
+            <div>
+                <input type="checkbox" id="getter" name="getter" value="getter">
+                <label for="getter">getter</label>
+            </div>
+        </label>
+    </form>
+    <div id="update">AAAAAAAAAAAAAA</div>
+    <div id="result"></div>
+</body>
+</html>
