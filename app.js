@@ -5,6 +5,11 @@ var propsCount = 0
 //TODO funciones primera letra mayus
 $(document).ready(function () {
     addProp()
+    $('body').on('mouseleave','.check-input', function (event) {
+    // $( ".check-input" ).mouseleave(function(event) {
+        // $(event.target.parentElement).append("eeee")
+        $(event.target).after("eeee")
+    });
     $("#update").click(function (e) { 
         var props = getProps()
         // var form = $("#class").serializeArray()
@@ -51,7 +56,7 @@ $(document).ready(function () {
         if (this.value == "custom") {
             console.log(event);
             var id = event.target.id
-            $(event.target).replaceWith(`<input type="text" name="property-type" id="`+id+`"></input>`)
+            $(event.target).replaceWith(`<input type="text" name="property-type" id="`+id+`" class="check-input"></input>`)
         }
       });
 })
@@ -76,30 +81,27 @@ function addProp() {
     `
     <hr/>
     <form action="" method="post" class="property">
-        <label for="">Property name <input type="text" name="property-name" id=""></label>
-        <label for="">Property type 
-            <select name="property-type" class="property-type" id="type`+propsCount+`">
-                <option value="int">int</option>
-                <option value="String">String</option>
-                <option value="boolean">boolean</option>
-                <option value="char">char</option>
-                <option value="custom">custom</option>
-            </select>
-        </label>
+        <label for="">Property name </label><input type="text" name="property-name" id="name`+propsCount+`" class="check-input" >
+        <label for="">Property type </label>
+        <select name="property-type" class="property-type" id="type`+propsCount+`">
+            <option value="int">int</option>
+            <option value="String">String</option>
+            <option value="boolean">boolean</option>
+            <option value="char">char</option>
+            <option value="custom">custom</option>
+        </select>
+        
         <div>Accesibility</div>
             <div>
-                <input type="radio" id="public`+propsCount+`" name="accesibility" value="public"
-                checked>
+                <input type="radio" id="public`+propsCount+`" name="accesibility" value="public" checked>
                 <label for="public`+propsCount+`">public</label> 
             </div>
             <div>
-                <input type="radio" id="private`+propsCount+`" name="accesibility" value="private"
-                >
+                <input type="radio" id="private`+propsCount+`" name="accesibility" value="private">
                 <label for="private`+propsCount+`">private</label> 
             </div>
             <div>
-                <input type="radio" id="protected`+propsCount+`" name="accesibility" value="protected"
-                >
+                <input type="radio" id="protected`+propsCount+`" name="accesibility" value="protected">
                 <label for="protected`+propsCount+`">protected</label> 
             </div>
         <label for="">Methods 
