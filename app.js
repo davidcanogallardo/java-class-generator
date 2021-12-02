@@ -191,7 +191,7 @@ function addPropForm() {
     </form>
     `
     propsCount++
-    $("#content").append(form)
+    $("#form-container").append(form)
 }
 
 function capitalizeText(text) {
