@@ -273,10 +273,12 @@ function appendAttributeToDom() {
             <label class="inputLabel" for="">Property type: </label>
             <select name="property-type" class="property-type check-input" id="type`+propsCount+`">
                 <option value="int">int</option>
-                <option value="String">String</option>
+                <option value="byte">byte</option>
                 <option value="boolean">boolean</option>
                 <option value="char">char</option>
-                <option value="custom">custom</option>
+                <option value="float">float</option>
+                <option value="String">String</option>
+                <option value="custom">Custom Attribute</option>
             </select>
         </div>
             
