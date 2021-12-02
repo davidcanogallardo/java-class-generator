@@ -79,16 +79,14 @@ $(document).ready(function () {
 
     //Boton de borrar un constructor
     $('body').on('click','.deleteConstructor', function (event) {
-        // if (event.target.id != "close1") {
-            $(event.target.parentElement.parentElement).replaceWith()
-        // }
+        $(event.target.parentElement.parentElement).replaceWith()
+        $("#result")[0].innerText = getClassFormattedString()
     })
 
     //Boton de borrar un atributo
     $('body').on('click','.deleteProperty', function (event) {
-        // if (event.target.id != "close1") {
-            $(event.target.parentElement).replaceWith()
-        // }
+        $(event.target.parentElement).replaceWith()
+        $("#result")[0].innerText = getClassFormattedString()
     })
 
     //Descargar la clase
@@ -224,7 +222,7 @@ function getClassFormattedString() {
         classText += `        return "`+className+` [" +`
         attributes.forEach((e, index) => {
             if (e["property-name"] != ""  && e["property-type"] != "") {
-                if (index == e.length) {
+                if (index+1 != attributes.length) {
                     classText += `"`+e["property-name"]+`="+`+"this."+e["property-name"]+`+", "+`
                     
                 } else {
