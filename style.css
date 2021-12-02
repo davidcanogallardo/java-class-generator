@@ -21,7 +21,46 @@ form {
     display: flex;
     flex-direction: column;
     gap: 7px;
+    
 }
+
+hr {
+    width: 100%;
+}
+
+#constructors {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+#constructors .input {
+    position: relative;
+} 
+
+#constructors .input > * {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+} 
+
+.property {
+    position: relative;
+}
+
+.deleteProperty, .deleteConstructor{
+    position: absolute;
+    top: -10px;
+    right: -8px;
+    background: red;
+    border-radius: 190px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 4px;
+}
+
 
 #result {
     border: 1px solid black;
@@ -83,7 +122,7 @@ input {
     padding: 11px;
 }
 
-#add {
+#add, #addConstrutor {
     padding: 10px;
     border-radius: 10px;
     background: #b3b3ff;
@@ -95,7 +134,7 @@ input {
     background: #ffb3b3;
 }
 
-#add:hover, #download:hover {
+#add:hover, #download:hover, #addConstrutor:hover {
     outline: 2px solid black;
     cursor: pointer;
 }

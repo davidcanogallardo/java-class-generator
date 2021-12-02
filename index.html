@@ -13,16 +13,23 @@
 <body>
     <div id="container">
         <div id="form-container">
-            <form action="" method="post" id="class">
+            <form id="class">
                 <h1>Header:</h1>
                 <div class="input">
                     <label for="" class="inputLabel">Class name:  </label><input type="text" name="class-name" id="class-name" class="check-input">
+                    <label for="extends" class="inputLabel">extends:  </label><input type="text" name="extends" id="extends" class="check-input">
+                    <label for="implements" class="inputLabel">implements:  </label><input type="text" name="implements" id="implements" class="check-input">
                 </div>
             </form>
-            <h1>Properties:</h1>
+
+            <h1>Attributes:</h1>
+        </div>
+        <div id="constructors">
+            <h1>Constructors:</h1>
         </div>
         <div class="button-container">
-            <div id="add">Add property</div>
+            <div id="add">Add attribute</div>
+            <div id="addConstrutor">Add constructor</div>
             <div id="download">Download Class</div>
         </div>
     </div>
