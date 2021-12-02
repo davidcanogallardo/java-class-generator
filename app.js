@@ -88,7 +88,7 @@ function getClassText() {
     var classText = ""
 
     //Crear clase
-    classText += "public static class "+$("#class-name")[0].value+" {\n"
+    classText += "public class "+$("#class-name")[0].value+" {\n"
 
     //Crear atributos
     props.forEach(e => {
@@ -96,8 +96,26 @@ function getClassText() {
             classText +="    "+ e["accesibility"] + " " + e["property-type"] + " " + e["property-name"] + ";\n"
         }
     });
-
+    
     classText += "\n"
+
+    classText +="    Public "+$("#class-name")[0].value+"("
+    props.forEach(e => {
+        if (e["property-name"] != ""  && e["property-type"] != "") {
+            classText +=e["property-type"]+" "+e["property-name"]+" "
+        }
+    });
+
+    classText += ") {\n"
+
+    props.forEach(e => {
+        if (e["property-name"] != ""  && e["property-type"] != "") {
+            classText +="        this."+e["property-name"]+" = "+e["property-name"]+";\n"
+        }
+    });
+    
+
+    classText += "    }\n"
 
     //Crear setters y getters
     props.forEach(e => {
