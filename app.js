@@ -149,7 +149,8 @@ function appendConstructorToDom() {
 }
 
 function getClassFormattedString() {
-    let props = getAttributesArray()
+    let className =$("#class-name")[0].value
+    let attributes = getAttributesArray()
     let classText = ""
     let extendsText = ""
     let implementsText = ""
@@ -161,10 +162,10 @@ function getClassFormattedString() {
         implementsText = " implements "+$("#implements").val()
     }
     //Crear cabecera clase
-    classText += "public class "+$("#class-name")[0].value+extendsText+" "+implementsText+" {\n"
+    classText += "public class "+className+extendsText+" "+implementsText+" {\n"
 
     //Crear definición de atributos
-    props.forEach(e => {
+    attributes.forEach(e => {
         if (e["property-name"] != ""  && e["property-type"] != "") {
             classText +="    "+ e["accesibility"] + " " + e["property-type"] + " " + e["property-name"] + ";\n"
         }
@@ -178,9 +179,9 @@ function getClassFormattedString() {
         constructors.forEach(construct => {
             classText +="    public "+$("#class-name")[0].value+"("
             construct.forEach(property => {
-                props.forEach((e,index) => {
+                attributes.forEach((e,index) => {
                     if (e["property-name"] == property) {
-                        if (index+1 != props.length) {
+                        if (index+1 != attributes.length) {
                             classText +=e["property-type"]+" "+e["property-name"]+", "
                         } else {
                             classText +=e["property-type"]+" "+e["property-name"]
@@ -192,7 +193,7 @@ function getClassFormattedString() {
             classText += ") {\n"
     
             construct.forEach(property => {
-                props.forEach(e => {
+                attributes.forEach(e => {
                     if (e["property-name"] == property) {
                         classText +="        this."+e["property-name"]+" = "+e["property-name"]+";\n"
                     }
@@ -204,19 +205,36 @@ function getClassFormattedString() {
         classText += `    public `+$("#class-name")[0].value+`(){\n    }\n\n`
     }
 
-    //Crear setters y getters
-    props.forEach(e => {
+    //Crear setters, getters, tostring
+    attributes.forEach(e => {
         if (e["setter"] != null) {
             classText += "    public void set"+capitalizeText(e["property-name"])+ "("+ e["property-type"] + " " +e["property-name"]+") {\n"
             classText += "       this."+e["property-name"]+" = "+e["property-name"]+";\n"
             classText += "    }\n\n"
-        }
+        } 
         if (e["getter"] != null) {
             classText += "    public "+ e["property-type"] + " get"+capitalizeText(e["property-name"])+ "() {\n"
             classText += "        return this."+e["property-name"]+";\n"
             classText+="    }\n\n"
         }
     });
+
+    if ($("#tostring")[0].checked) {
+        classText += "    public String toString() {\n"
+        classText += `        return "`+className+` [" +`
+        attributes.forEach((e, index) => {
+            if (e["property-name"] != ""  && e["property-type"] != "") {
+                if (index == e.length) {
+                    classText += `"`+e["property-name"]+`="+`+"this."+e["property-name"]+`+", "+`
+                    
+                } else {
+                    classText += `"`+e["property-name"]+`="+`+"this."+e["property-name"]+`+`
+                }
+            }
+        });
+        classText+=`"]";\n    }\n`
+    }
+
 
     //Fin
     classText += "}"
@@ -285,11 +303,11 @@ function appendAttributeToDom() {
         <div class="accessibility-container input">
             <label class="inputLabel">Accessibility: </label>
             <div>
-                <input type="radio" id="public`+propsCount+`" name="accesibility" value="public" checked class="check-input">
+                <input type="radio" id="public`+propsCount+`" name="accesibility" value="public" class="check-input">
                 <label for="public`+propsCount+`">public</label> 
             </div>
             <div>
-                <input type="radio" id="private`+propsCount+`" name="accesibility" value="private" class="check-input">
+                <input type="radio" id="private`+propsCount+`" name="accesibility" value="private" class="check-input" checked>
                 <label for="private`+propsCount+`">private</label> 
             </div>
             <div>
